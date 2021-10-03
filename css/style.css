@@ -38,6 +38,11 @@ html {
 }
 
 body {
+     overflow-x : hidden;
+     position: relative;
+     min-height: 100%;
+     top: 0px!important;
+     margin: 0;
      color: #666666;
      font-size: 14px;
      font-family: 'Raleway', sans-serif;
@@ -264,7 +269,51 @@ button {
      width: 280px;
 }
 
+.dropup, .dropright, .dropdown, .dropleft {
+     position: relative;
+ }
+ .dropdown-toggle {
+     white-space: nowrap;
+ }
+.dropdown-menu.show {
+     display: block;
+ }
+.dropdown-menu {
+     position: absolute;
+     top: 100%;
+     left: 0;
+     z-index: 1000;
+     display: none;
+     float: left;
+     min-width: 10rem;
+     padding: 0.5rem 0;
+     margin: 0.125rem 0 0;
+     font-size: 1rem;
+     color: #212529;
+     text-align: left;
+     list-style: none;
+     background-color: #fff;
+     background-clip: padding-box;
+     border: 1px solid rgba(0, 0, 0, 0.15);
+     border-radius: 0.25rem;
+ }
+.navbar-nav > .nav-item .dropdown-menu {
+     border: none;
+     background: #fff;
+     -webkit-box-shadow: 0px 10px 34px -20px rgb(0 0 0 / 41%);
+     -moz-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
+     box-shadow: 0px 10px 34px -20px rgb(0 0 0 / 41%);
+ }
 
+ @media (min-width: 992px){
+ .navbar-expand-lg .navbar-nav .dropdown-menu {
+     position: absolute;
+ }
+ }
+ .navbar-nav .dropdown-menu {
+     position: static;
+     float: none;
+ }
 /*-- navigation--*/
 
 .navigation.navbar {
@@ -884,10 +933,10 @@ button {
 }
 .hotel-details{
      box-shadow: 0 5px 10px rgb(56, 56, 55);
-     border-radius: 10px;
+     border-radius: 40px;
 }
-.hotel-details ul li{
-     border-radius: 10px;
+.hotel-details ul li, .hotel-details ul li img{
+     border-radius: 40px;
      
 }
 .section-margin-top { margin-top: 100px; }
@@ -1218,4 +1267,26 @@ color: #FFC107;
    .rating [type="radio"]:nth-of-type(4):focus ~ .stars label:nth-of-type(4),
    .rating [type="radio"]:nth-of-type(5):focus ~ .stars label:nth-of-type(5) {
      color: #01d28e;
+   }
+    /*
+    Google translate
+    */
+    #goog-gt-tt {
+     display: none !important;
+   }
+   
+   .goog-te-banner-frame {
+     display: none !important;
+   }
+   
+   .goog-te-menu-value:hover {
+     text-decoration: none !important;
+   }
+   
+   #google_translate_element2 {
+     display: none !important;
+   }
+   
+   #google_translate_element2 {
+     display: none !important;
    }
