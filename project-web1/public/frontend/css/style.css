@@ -1053,6 +1053,22 @@ user-select: none;
 .wrapper input ~ label:before {
 color: #FFC107;
 }
+
+.wrapper label.disactive:before {
+     margin: 0 3px;
+     content: "\f005";
+     font-family: FontAwesome;
+     display: inline-block;
+     font-size: 1.5em;
+     color: #ccc !important;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     user-select: none;
+     }
+     
+     .wrapper input ~ label.disactive:before {
+     color: #ccc !important;
+     }
 .tm-home-box-2 .location{
      margin-top: -25px;
      padding: 10px 25px;
