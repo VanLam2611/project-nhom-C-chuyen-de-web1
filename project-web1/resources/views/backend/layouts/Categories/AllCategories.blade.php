@@ -123,13 +123,13 @@
                           <!-- <td>{{ $loop->index + 1 }}</td> -->
 
 
-                          <td>{{$categories->id}}</td>
-                          <td>{{$categories->name}}</td>
+                          <td>{{$categories->categories_id}}</td>
+                          <td>{{$categories->categories_name}}</td>
 
                           <td>
-                            <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/categories/edit/'.$key.$categories->id)}}"><i class="fa fa-wrench"></i></a>
+                            <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/categories/edit/'.$key.$categories->categories_id)}}"><i class="fa fa-wrench"></i></a>
 
-                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/categories/delete/'.$key.$categories->id)}}"><i class="fa fa-trash"></i></a>
+                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/categories/delete/'.$key.$categories->categories_id)}}"><i class="fa fa-trash"></i></a>
                               </div>
 
                           </td>

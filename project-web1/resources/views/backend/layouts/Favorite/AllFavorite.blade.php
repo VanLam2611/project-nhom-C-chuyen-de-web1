@@ -129,7 +129,7 @@
                           <td>
                             <!-- <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/favorite/edit/'.$key.$favorite->id)}}"><i class="fa fa-wrench"></i></a> -->
 
-                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/favorite/delete/'.$key.$favorite->id)}}"><i class="fa fa-trash"></i></a>
+                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/favorite/delete/'.$key.$favorite->favorite_id)}}"><i class="fa fa-trash"></i></a>
                               </div>
 
                           </td>

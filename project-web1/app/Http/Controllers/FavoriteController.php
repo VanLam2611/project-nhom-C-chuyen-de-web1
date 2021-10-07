@@ -14,10 +14,10 @@ class FavoriteController extends Controller
         // $admin_id = Session::get('id');
         // $admin_name = DB::table('users')->where('id', $admin_id)->first();
         $favorite = DB::table("favorite")
-             ->join('hotel', 'hotel.id', '=', 'favorite.hotel_id')
+             ->join('hotel', 'hotel.hotel_id', '=', 'favorite.hotel_id')
             // ->join('manufactures', 'manufactures.id', '=', 'products.manu_id')
              ->select('favorite.*','hotel.name');
-        $favorite = $favorite->orderBy("favorite.id", "Desc");
+        $favorite = $favorite->orderBy("favorite.favorite_id", "Desc");
 
         $favorite = $favorite->paginate(15);
         return view('backend.layouts.Favorite.AllFavorite')->with('favorite', $favorite);
@@ -94,7 +94,7 @@ class FavoriteController extends Controller
         $key = substr($id,0,9);
         $id = substr($id,9);
         
-        DB::table('favorite')->where('id', $id)->delete();
+        DB::table('favorite')->where('favorite_id', $id)->delete();
 
         
         return Redirect::to('/favorite')->with([ "message" => "Delete thành công!"]);

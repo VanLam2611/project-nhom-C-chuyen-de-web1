@@ -124,14 +124,14 @@
                           <!-- <td>{{ $loop->index + 1 }}</td> -->
 
 
-                          <td>{{$rating->id}}</td>
+                          <td>{{$rating->rating_id}}</td>
                           <td>{{$rating->name}}</td>
                           <td>{{$rating->content}}</td>
 
                           <td>
-                            <!-- <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/categories/edit/'.$key.$rating->id)}}"><i class="fa fa-wrench"></i></a> -->
+                           
 
-                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/rating/delete/'.$key.$rating->id)}}"><i class="fa fa-trash"></i></a>
+                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/rating/delete/'.$key.$rating->rating_id)}}"><i class="fa fa-trash"></i></a>
                               </div>
 
                           </td>

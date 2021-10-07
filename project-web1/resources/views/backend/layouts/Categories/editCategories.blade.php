@@ -68,7 +68,7 @@
                     </div>
                     <div class="x_content">
                         @foreach($categories as $categories)
-                        <form class="" action="{{URL::to('/categories/update/'.$categories->id)}}" method="post" enctype="multipart/form-data">
+                        <form class="" action="{{URL::to('/categories/update/'.$categories->categories_id)}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <meta name="csrf-token" content="{{ csrf_token() }}">
                             <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>

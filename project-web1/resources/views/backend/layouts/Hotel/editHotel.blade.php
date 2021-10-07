@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="x_content">
                                 @foreach($edit_hotel as $hotel)
-                                    <form class="" action="{{URL::to('/hotels/updatehotel/'.$hotel->id)}}" method="post" enctype="multipart/form-data">
+                                    <form class="" action="{{URL::to('/hotels/updatehotel/'.$hotel->hotel_id)}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <meta name="csrf-token" content="{{ csrf_token() }}">
                                         <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
@@ -85,7 +85,16 @@
                                         
                                        
                                         
-                                        
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Type name<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                            <select class="form-control" name="type" id="cate">
+                                                @foreach($type as $type)
+                                            <option value="{{$type->categories_id}}">{{$type->categories_name}}</option>
+                                           @endforeach
+                                            </select> *
+                                        </div>
+                                        </div>
                                         
                                         
                                         

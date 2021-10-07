@@ -19,7 +19,7 @@ class CategoriesController extends Controller
             // ->join('protypes', 'protypes.id', '=', 'products.type_id')
             // ->join('manufactures', 'manufactures.id', '=', 'products.manu_id')
              ->select('categories.*');
-        $categories = $categories->orderBy("categories.id", "Desc");
+        $categories = $categories->orderBy("categories.categories_id", "Desc");
 
         $categories = $categories->paginate(15);
         return view('backend.layouts.Categories.AllCategories')->with('categories', $categories);
@@ -40,16 +40,9 @@ class CategoriesController extends Controller
         // $admin_id = Session::get('id');
         // $admin_name = DB::table('users')->where('id', $admin_id)->first();
         $data = array();
-        $data['name'] = $request->name;
+        $data['categories_name'] = $request->name;
         
-        // $data['price'] = $request->price;
-        // $data['type_id'] = $request->type;
-        // $data['manu_id'] = $request->manu;
-        // $data['description'] = $request->description;
-        // $data['sale'] = $request->sale;
-        // $data['size'] = $request->size;
-        // $data['gender'] = $request->gender;
-       
+      
         
         DB::table('categories')->insert($data);
         
@@ -57,14 +50,9 @@ class CategoriesController extends Controller
     }
     public function EditCategories($id)
     {
-        // $this->AuthLogin();
-        // $admin_id = Session::get('id');
-        // $admin_name = DB::table('users')->where('id', $admin_id)->first();
-        // $manu =  DB::table("manufactures")->orderBy("id", "desc")->get();
-        // $type =  DB::table("protypes")->orderBy("id", "desc")->get();
-        // $gender =  DB::table("genders")->orderBy("id", "desc")->get();
+        
         $id = substr($id,9);
-        $categories =  DB::table("categories")->where('id', $id)->get();
+        $categories =  DB::table("categories")->where('categories_id', $id)->get();
         return view('backend.layouts.Categories.editCategories')->with('categories', $categories);
     }
     public function UpdateCategories(Request $request, $id)
@@ -73,18 +61,12 @@ class CategoriesController extends Controller
         // $admin_id = Session::get('id');
         // $admin_name = DB::table('users')->where('id', $admin_id)->first();
         $data = array();
-        $data['name'] = $request->name;
+        $data['categories_name'] = $request->name;
        
-        // $data['price'] = $request->price;
-        // $data['type_id'] = $request->type;
-        // $data['manu_id'] = $request->manu;
-        // $data['description'] = $request->description;
-        // $data['sale'] = $request->sale;
-        // $data['size'] = $request->size;
-        // $data['gender'] = $request->gender;
+       
        
         
-        DB::table('categories')->where('id', $id)->update($data);
+        DB::table('categories')->where('categories_id', $id)->update($data);
         
         return Redirect::to('/categories')->with(["message" => "Cập Nhập thành công!"]);
     }
@@ -96,7 +78,7 @@ class CategoriesController extends Controller
         $key = substr($id,0,9);
         $id = substr($id,9);
         
-        DB::table('categories')->where('id', $id)->delete();
+        DB::table('categories')->where('categories_id', $id)->delete();
 
         
         return Redirect::to('/categories')->with([ "message" => "Delete thành công!"]);

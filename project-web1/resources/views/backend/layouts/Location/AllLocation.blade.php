@@ -123,13 +123,13 @@
                           <!-- <td>{{ $loop->index + 1 }}</td> -->
 
 
-                          <td>{{$location->id}}</td>
+                          <td>{{$location->location_id}}</td>
                           <td>{{$location->address}}</td>
 
                           <td>
-                            <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/location/edit/'.$key.$location->id)}}"><i class="fa fa-wrench"></i></a>
+                            <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/location/edit/'.$key.$location->location_id)}}"><i class="fa fa-wrench"></i></a>
 
-                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/location/delete/'.$key.$location->id)}}"><i class="fa fa-trash"></i></a>
+                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/location/delete/'.$key.$location->location_id)}}"><i class="fa fa-trash"></i></a>
                               </div>
 
                           </td>

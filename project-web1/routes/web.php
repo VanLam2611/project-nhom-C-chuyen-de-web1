@@ -13,13 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+
 
 
 
@@ -29,18 +25,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 ********************************************************************
 */
 Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "App\Http\Controllers"], function () {
-    // Route::get('/admin/tc', 'AdminController@getIndexAdmin');
-    // Route::get('/allhotels', 'AdminController@getAllHotel');
-    // Route::get('/admin/addhotel', 'AdminController@AddHotel');
-    // Route::post('/admin/savehotel', 'AdminController@getSaveHotel');
-    // Route::get('/admin/deletehotel/{id}', 'AdminController@DeleteHotel');
-    // Route::get('/admin/edithotel/{id}', 'AdminController@EditHotel');
-    // Route::post('/admin/updatehotel/{id}', 'AdminController@UpdateHotel');
+   
+
 
     Route::group(['middleware' => ['auth']], function () {
-      
+        Route::group(["prefix" => "dashboard"], function() {
+//             Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
         //Dashboard
         Route::get("/", ["as" => "admin.dashboard.index", "uses" => "AdminController@getIndexAdmin"]);
+        });
 
         Route::group(["prefix" => "hotels"], function() {
             Route::get("/", ["as" => "admin.hotels", "uses" => "AdminController@getAllHotel"]);
@@ -87,43 +82,24 @@ Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "Ap
             Route::get("edit/{id}", ["as" => "admin.users.edit", "uses" => "UsersController@EditUser"]);
             Route::post("update/{id}", ["as" => "admin.users.eidt", "uses" => "UsersController@UpdateUser"]);
         });
-
-
     });
+
+
 });
-// Route::get('/login-checkout', 'CheckoutController@login_checkout');
+/*
+********************************************************************
+*******************ROUTE Ở PHẦN GIAO DIỆN ADMIN********************
+********************************************************************
+*/
+Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "App\Http\Controllers"], function () {
+
+    Route::get("/", ["as" => "frontend.dashboard.index", "uses" => "FrontendController@getIndex"]);
+    
+});
 
 
-// Route::get('/allproducts', 'AdminController@getAllProductsAdmin');
 
 
-
-
-// //manufacture admin
-// Route::get('/allmanufactures', 'AdminController@getAllManufacturesAdmin');
-// Route::get('/admin/addmanufactures', 'AdminController@getIndexAddManufactures');
-// Route::post('/admin/savemanufactures', 'AdminController@getSaveManufactures');
-// Route::get('/admin/editmanu/{id}', 'AdminController@EditManu');
-// Route::post('/admin/updatemanu/{id}', 'AdminController@UpdateManu');
-// Route::get('/admin/deletemanu/{id}', 'AdminController@DeleteManu');
-// Route::get('/allprotypes', 'AdminController@getAllProtypesAdmin');
-// Route::get('/admin/addprotypes', 'AdminController@getIndexAddProtypes');
-// Route::post('/admin/saveprotypes', 'AdminController@getSaveProtypes');
-// Route::get('/admin/editprotype/{id}', 'AdminController@EditProtypes');
-// Route::post('/admin/updateprotype/{id}', 'AdminController@UpdateProtypes');
-// Route::get('/admin/deleteprotype/{id}', 'AdminController@DeleteProtypes');
-
-// //user admin
-// Route::get('/allusers', 'AdminController@getAllUserInAdmin');
-// Route::get('/admin/deleteuser/{id}', 'AdminController@DeleteUser');
-// Route::get('/adduser', 'AdminController@AddUser');
-// Route::post('/saveuser', 'AdminController@SaveUser');
-// Route::get('/edituser/{id}', 'AdminController@EditUser');
-// Route::post('/updateuser/{id}', 'AdminController@UpdateUser');
-// //bill admin
-// Route::get('/allbills', 'AdminController@getAllBillInAdmin');
-// Route::get('/admin/deletebill/{id}', 'AdminController@DeleteBill');
-// Route::get('/admin/billdetail/{id}', 'AdminController@DetailBill');
 
 
 

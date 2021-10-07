@@ -78,32 +78,16 @@
                                         <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="...." required="required" />
                                     </div>
                                 </div>
-                                <!-- <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">price<span class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" class='price' name="price" type="text" />
-                                    </div>
-                                </div>
-                             
-                          
                                 <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Description <span class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <textarea style="resize: none;" class="form-control" type="text" class='description' name="description" required='required'> </textarea>
-                                    </div>
-                                </div>
-                                <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Sale<span class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" class='sale' name="sale">
-                                    </div>
-                                </div>
-                                <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Size<span class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" class='size' name="size" required='required'>
-                                    </div>
-                                </div> -->
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Type name<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                            <select class="form-control" name="type" id="cate">
+                                                @foreach($type as $type)
+                                            <option value="{{$type->categories_id}}">{{$type->categories_name}}</option>
+                                           @endforeach
+                                            </select> *
+                                        </div>
+                                        </div>
 
                             
                                 <div class="field item form-group">

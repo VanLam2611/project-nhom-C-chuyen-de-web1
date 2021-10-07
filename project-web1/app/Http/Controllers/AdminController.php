@@ -55,24 +55,25 @@ class AdminController extends Controller
     {
       
         $all_hotel = DB::table("hotel")
-            // ->join('protypes', 'protypes.id', '=', 'products.type_id')
-            // ->join('manufactures', 'manufactures.id', '=', 'products.manu_id')
-             ->select('hotel.*');
-        $all_hotel = $all_hotel->orderBy("hotel.id", "Desc");
+             ->join('categories', 'categories.categories_id', '=', 'hotel.type_name')
+            
+             ->select('hotel.*','categories.*');
+        $all_hotel = $all_hotel->orderBy("hotel.hotel_id", "Desc");
 
         $all_hotel = $all_hotel->paginate(15);
         return view('backend.layouts.Hotel.AllHotels')->with('all_hotel', $all_hotel);
     }
     public function AddHotel(Request $request)
     {
-       
-        return view('backend.layouts.Hotel.addHotel');
+        $type = DB::table("categories")->get();
+        return view('backend.layouts.Hotel.addHotel')->with('type', $type);
     }
     public function getSaveHotel(Request $request)
     {
     
         $data = array();
         $data['name'] = $request->name;
+        $data['type_name'] = $request->type;
         $data['status'] = 0;
        
         $get_image = $request->file('product_image');
@@ -93,10 +94,10 @@ class AdminController extends Controller
     }
     public function EditHotel($id)
     {
-        
+        $type = DB::table("categories")->get();
         $id = substr($id,9);
-        $edit_hotel =  DB::table("hotel")->where('id', $id)->get();
-        return view('backend.layouts.Hotel.editHotel')->with('edit_hotel', $edit_hotel);
+        $edit_hotel =  DB::table("hotel")->where('hotel_id', $id)->get();
+        return view('backend.layouts.Hotel.editHotel')->with('edit_hotel', $edit_hotel)->with('type', $type);
     }
     public function UpdateHotel(Request $request, $id)
     {
@@ -112,12 +113,12 @@ class AdminController extends Controller
             $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
             $get_image->move('img/hotel/', $new_image);
             $data['image'] = $new_image;
-            DB::table('hotel')->where('id', $id)->update($data);
+            DB::table('hotel')->where('hotel_id', $id)->update($data);
           
             return Redirect::to('/hotels')->with([ "message" => "Cập Nhập thành công!"]);
         }
         
-        DB::table('hotel')->where('id', $id)->update($data);
+        DB::table('hotel')->where('hotel_id', $id)->update($data);
         
         return Redirect::to('/hotels')->with(["message" => "Cập Nhập thành công!"]);
     }
@@ -129,7 +130,7 @@ class AdminController extends Controller
         $key = substr($id,0,9);
         $id = substr($id,9);
         
-        DB::table('hotel')->where('id', $id)->delete();
+        DB::table('hotel')->where('hotel_id', $id)->delete();
 
         
         return Redirect::to('/hotels')->with([ "message" => "Delete thành công!"]);

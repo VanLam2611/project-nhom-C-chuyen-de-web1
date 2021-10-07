@@ -95,15 +95,9 @@
                         <th>Image</th>
                        
                           <th>Name</th>
+                          <th>Type</th>
                           <th>Status</th>
-                          <!-- <th>Type_id</th>
-                          <th>Manu_id</th>
-                          <th>Description</th>
-                          <th>Sale</th>
-                          <th>Size</th>
-                          <th>Gender</th>
-                          <th>Created_at</th>
-                          <th>Updated_at</th> -->
+                         
                           <th style="width:50px;"></th>
                           
                         </tr>
@@ -123,12 +117,13 @@
                           <td><img src="img/hotel/{{$hotel->image}}" height="100" width="100" alt=""></td>
                        
                           <td>{{$hotel->name}}</td>
+                          <td>{{$hotel->categories_name}}</td>
                           <td>{{$hotel->status}}</td>
                          
                           <td >
-                          <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/hotels/edithotel/'.$key.$hotel->id)}}"><i class="fa fa-wrench"></i></a>
+                          <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/hotels/edithotel/'.$key.$hotel->hotel_id)}}"><i class="fa fa-wrench"></i></a>
                             
-                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/hotels/deletehotel/'.$key.$hotel->id)}}"><i class="fa fa-trash"></i></a>
+                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/hotels/deletehotel/'.$key.$hotel->hotel_id)}}"><i class="fa fa-trash"></i></a>
                         </div>
                          
                         </td>

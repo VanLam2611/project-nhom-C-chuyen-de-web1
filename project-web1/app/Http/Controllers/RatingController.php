@@ -17,7 +17,7 @@ class RatingController extends Controller
              ->join('users', 'users.id', '=', 'rating.user_id')
             // ->join('manufactures', 'manufactures.id', '=', 'products.manu_id')
              ->select('rating.*','users.name');
-        $rating = $rating->orderBy("rating.id", "Desc");
+        $rating = $rating->orderBy("rating.rating_id", "Desc");
 
         $rating = $rating->paginate(15);
         return view('backend.layouts.Rating.AllRating')->with('rating', $rating);
@@ -31,7 +31,7 @@ class RatingController extends Controller
         $key = substr($id,0,9);
         $id = substr($id,9);
         
-        DB::table('rating')->where('id', $id)->delete();
+        DB::table('rating')->where('rating_id', $id)->delete();
 
         
         return Redirect::to('/rating')->with([ "message" => "Delete thành công!"]);

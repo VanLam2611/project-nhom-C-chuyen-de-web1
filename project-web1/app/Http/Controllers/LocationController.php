@@ -18,7 +18,7 @@ class LocationController extends Controller
             // ->join('protypes', 'protypes.id', '=', 'products.type_id')
             // ->join('manufactures', 'manufactures.id', '=', 'products.manu_id')
              ->select('location.*');
-        $location = $location->orderBy("location.id", "Desc");
+        $location = $location->orderBy("location.location_id", "Desc");
 
         $location = $location->paginate(15);
         return view('backend.layouts.Location.AllLocation')->with('location', $location);
@@ -63,7 +63,7 @@ class LocationController extends Controller
         // $type =  DB::table("protypes")->orderBy("id", "desc")->get();
         // $gender =  DB::table("genders")->orderBy("id", "desc")->get();
         $id = substr($id,9);
-        $location =  DB::table("location")->where('id', $id)->get();
+        $location =  DB::table("location")->where('location_id', $id)->get();
         return view('backend.layouts.Location.editLocation')->with('location', $location);
     }
     public function UpdateLocation(Request $request, $id)
@@ -83,7 +83,7 @@ class LocationController extends Controller
         // $data['gender'] = $request->gender;
        
         
-        DB::table('location')->where('id', $id)->update($data);
+        DB::table('location')->where('location_id', $id)->update($data);
         
         return Redirect::to('/location')->with([ "message" => "Cập Nhập thành công!"]);
     }
@@ -95,7 +95,7 @@ class LocationController extends Controller
         $key = substr($id,0,9);
         $id = substr($id,9);
         
-        DB::table('location')->where('id', $id)->delete();
+        DB::table('location')->where('location_id', $id)->delete();
 
         
         return Redirect::to('/location')->with([ "message" => "Delete thành công!"]);
