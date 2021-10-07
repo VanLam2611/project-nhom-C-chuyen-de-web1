@@ -1,9 +1,15 @@
 @extends('frontend.index-master')
+
 @section('content')
 
 
+
+
+
+
+
  <!-- banner -->
- <section class="banner_main">
+      <section class="banner_main">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -25,22 +31,24 @@
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <form class="form_book">
+                  <form method="POST" action="{{asset('details')}}" class="form_book">
+                     <!-- Add csrf token -->
+                     @csrf
                      <div class="row">
                         <div class="col-md-3">
                            <label class="date">ARRIVAL DATE</label>
-                           <input class="book_n"  type="date" >
+                           <input class="book_n" type="date" name="pick-up">
                         </div>
                         <div class="col-md-3">
                            <label class="date">DEPARTURE DATE</label>
-                           <input class="book_n"  type="date" >
+                           <input class="book_n" type="date" name="drop-off">
                         </div>
                         <div class="col-md-3">
                            <label class="date">PERSON</label>
-                           <input class="book_n" placeholder="2" type="type" name="2">
+                           <input class="book_n" placeholder="2" type="type" name="person">
                         </div>
                         <div class="col-md-3">
-                           <button class="book_btn">Book Now</button>
+                           <button class="book_btn" type="submit">Book Now</button>
                         </div>
                      </div>
                   </form>
@@ -326,4 +334,5 @@
          </div>
       </div>
       <!-- end testimonial -->
+
 @endsection
