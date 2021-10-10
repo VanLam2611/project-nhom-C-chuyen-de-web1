@@ -1,20 +1,9 @@
 
 
-/*--------------------------------------------------------------------- File Name: responsive.css ---------------------------------------------------------------------*/
+/*---import Fonts ------*/
 
-
-/*--------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
-
-@import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,400,600,700,900&display=swap');
-
-/*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
- 2) font-family: 'Poppins', sans-serif;
- ----------------------------------------*****/
 
 
 /*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
@@ -45,7 +34,7 @@ body {
      margin: 0;
      color: #666666;
      font-size: 14px;
-     font-family: 'Raleway', sans-serif;
+     font-family: 'Poppins', sans-serif;
      line-height: 1.80857;
      font-weight: normal;
 }
@@ -61,12 +50,7 @@ a {
      transition: all .3s ease-in-out;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
      letter-spacing: 0;
      font-weight: normal;
      position: relative;
@@ -406,6 +390,17 @@ button {
      background: url(../images/banner.jpg);
      background-repeat: no-repeat;
      min-height: 400px;
+     display: flex;
+     justify-content: center;
+     align-content: center;
+     align-items: center;
+     background-size: 100% 100%;
+}
+
+.banner_payment {
+     background: url(../images/banner.jpg);
+     background-repeat: no-repeat;
+     min-height: 80px;
      display: flex;
      justify-content: center;
      align-content: center;
@@ -991,7 +986,7 @@ h1,h2,h3 {
 	margin: 0;
 	padding: 0;
 }
-h1,h2,h3,a,p { font-family: 'Open Sans', sans-serif; }
+h1,h2,h3,a,p { font-family: 'Poppins', sans-serif; }
 a:hover,
 a:focus {
 	text-decoration: none;
@@ -1053,22 +1048,6 @@ user-select: none;
 .wrapper input ~ label:before {
 color: #FFC107;
 }
-
-.wrapper label.disactive:before {
-     margin: 0 3px;
-     content: "\f005";
-     font-family: FontAwesome;
-     display: inline-block;
-     font-size: 1.5em;
-     color: #ccc !important;
-     -webkit-user-select: none;
-     -moz-user-select: none;
-     user-select: none;
-     }
-     
-     .wrapper input ~ label.disactive:before {
-     color: #ccc !important;
-     }
 .tm-home-box-2 .location{
      margin-top: -25px;
      padding: 10px 25px;
@@ -1306,3 +1285,86 @@ color: #FFC107;
    #google_translate_element2 {
      display: none !important;
    }
+
+
+.payment {
+     margin-top: 50px;
+}
+.payment .info-left,.payment .info-right{
+     padding: 20px;
+     border: 1px solid #db6315;
+}
+.payment .info-left img{
+     max-height: 200px;
+     width: 100%;
+}
+.payment .info-left h3{
+     text-align: center;
+     font-weight: bold;
+     margin-top: 5px;
+     border-bottom: 1px solid #db6315;
+}
+.payment .time-rent{
+     margin-top: 20px;
+     padding: 15px;
+     background: #DDD;
+}
+.payment .time-rent .pick{
+     width: 50%;
+     font-weight: 600;
+}
+.payment .time-rent .info-pick{
+     width: 50%;
+     text-align: right;
+}
+.payment .time-rent .total{
+     font-size: 18px;
+     font-weight: 600;
+     border-top: 1px solid #000;
+     padding-top: 10px;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+     color: #fff;
+     background-color: #db6315;
+ }
+ .card {
+     position: relative;
+     display: -ms-flexbox;
+     display: flex;
+     -ms-flex-direction: column;
+     flex-direction: column;
+     min-width: 0;
+     word-wrap: break-word;
+     background-color: #fff;
+     background-clip: border-box;
+     border: 1px solid transparent;
+     border-radius: .25rem;
+ }
+ .payment-visa .choose-payment{
+      border-bottom: 1px solid #db6315;
+ }
+ .form-group input:focus{
+      border: 1px solid #db6315 !important;
+ }
+.info-right .payment-select h4{
+     line-height: 1.5;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+.border-bt {
+     border-bottom: 1px solid #db6315;
+ }
+.payment .pay-now {
+     width: 100%;
+     padding: 15px;
+     background: #db6315;
+     text-align: center;
+     color: #fff;
+     font-weight: 500;
+     border-radius: 5px;
+     border: none !important;
+ }
+ .mt-100{
+      margin-top: 100px !important;
+ }

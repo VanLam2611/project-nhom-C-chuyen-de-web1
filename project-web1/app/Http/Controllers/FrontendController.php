@@ -69,4 +69,16 @@ class FrontendController extends Controller
         return view('frontend.layout.details')->with('hotel_search', $hotel);
 
     }
+
+    /**
+     * Payment hotel by id
+     */
+    public function paymentHotelById($id){
+        $hotel = DB::table('hotel')
+        ->join('location','location.location_id','=','hotel.location')
+        ->select('hotel.*','location.*')
+        ->where('hotel_id', $id)->get();
+
+        return view('frontend.layout.payment')->with('hotel', $hotel);
+    }
 }
