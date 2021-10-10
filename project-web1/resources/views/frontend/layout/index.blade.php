@@ -2,12 +2,6 @@
 
 @section('content')
 
-
-
-
-
-
-
  <!-- banner -->
       <section class="banner_main">
          <div class="container">

@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="search-wrapper">
+                <div class="search-wrapper active">
                     <div class="input-holder">
                         <form method="GET" action="search.html">
                             <input type="text" class="search-input" placeholder="Type to search" />
@@ -48,7 +48,7 @@
             @foreach($all_hotel as $hotel)
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-xxs-12 mb-5">
                 <div class="tm-home-box-2">
-                    <img src="{{asset('')}}img/hotel/{{$hotel->image}}  " alt="image" class="img-responsive">
+                    <img src="{{asset('')}}frontend/images/{{$hotel->image}}  " alt="image" class="img-responsive">
                     <h3>{{$hotel->name}}</h3>
                     <div class="d-flex">
                         <div class="w-50">
