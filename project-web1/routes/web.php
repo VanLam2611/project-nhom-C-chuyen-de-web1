@@ -94,6 +94,12 @@ Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "Ap
 Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "App\Http\Controllers"], function () {
 
     Route::get("/", ["as" => "frontend.dashboard.index", "uses" => "FrontendController@getIndex"]);
+
+    Route::get("/hotel", ["as" => "frontend.dashboard.index.allhotel", "uses" => "FrontendController@getAllHotel"]);
+    Route::get("/detail/{id}", ["as" => "frontend.dashboard.index.detailhotel", "uses" => "FrontendController@getDetailHotel"]);
+
+    Route::post("/details", ["as" => "frontend.dashboard.index", "uses" => "FrontendController@rentalHotelOption"]);
+
     
 });
 

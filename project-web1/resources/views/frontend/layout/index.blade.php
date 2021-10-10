@@ -1,10 +1,15 @@
-@extends('index-master')
+@extends('frontend.index-master')
+
 @section('content')
 
-<section>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad odio, voluptates architecto itaque illo harum, molestiae, impedit at et error dolorum tenetur nostrum quod omnis iste asperiores neque placeat id.</section>
-<?php echo $test; ?>
+
+
+
+
+
+
  <!-- banner -->
- <section class="banner_main">
+      <section class="banner_main">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -26,22 +31,24 @@
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <form class="form_book">
+                  <form method="POST" action="{{asset('details')}}" class="form_book">
+                     <!-- Add csrf token -->
+                     @csrf
                      <div class="row">
                         <div class="col-md-3">
                            <label class="date">ARRIVAL DATE</label>
-                           <input class="book_n"  type="date" >
+                           <input class="book_n" type="date" name="pick-up">
                         </div>
                         <div class="col-md-3">
                            <label class="date">DEPARTURE DATE</label>
-                           <input class="book_n"  type="date" >
+                           <input class="book_n" type="date" name="drop-off">
                         </div>
                         <div class="col-md-3">
                            <label class="date">PERSON</label>
-                           <input class="book_n" placeholder="2" type="type" name="2">
+                           <input class="book_n" placeholder="2" type="type" name="person">
                         </div>
                         <div class="col-md-3">
-                           <button class="book_btn">Book Now</button>
+                           <button class="book_btn" type="submit">Book Now</button>
                         </div>
                      </div>
                   </form>
@@ -76,12 +83,12 @@
                                  <div class="row">
                                     <div class="col-md-6 margin_boot">
                                        <div class="test_box">
-                                          <img src="images/img1.jpg" class="img-fluid" style="border-radius: 10px;" alt="">
+                                          <img src="{{url('frontend/images/img1.jpg')}}" class="img-fluid" style="border-radius: 10px;" alt="">
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="test_box">
-                                          <img src="images/img1.jpg" class="img-fluid" style="border-radius: 10px;" alt="">
+                                          <img src="{{url('frontend/images/img1.jpg')}}" class="img-fluid" style="border-radius: 10px;" alt="">
                                        </div>
                                     </div>
                                  </div>
@@ -94,12 +101,12 @@
                                  <div class="row">
                                     <div class="col-md-6 margin_boot">
                                        <div class="test_box">
-                                          <img src="images/img1.jpg" class="img-fluid" style="border-radius: 10px;" alt="">
+                                          <img src="{{url('frontend/images/img1.jpg')}}" class="img-fluid" style="border-radius: 10px;" alt="">
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="test_box">
-                                          <img src="images/img1.jpg" class="img-fluid" style="border-radius: 10px;" alt="">
+                                          <img src="{{url('frontend/images/img1.jpg')}}" class="img-fluid" style="border-radius: 10px;" alt="">
                                        </div>
                                     </div>
                                  </div>
@@ -112,12 +119,12 @@
                                  <div class="row">
                                     <div class="col-md-6 margin_boot">
                                        <div class="test_box">
-                                          <img src="images/img1.jpg" class="img-fluid" style="border-radius: 10px;" alt="">
+                                          <img src="{{url('frontend/images/img1.jpg')}}" class="img-fluid" style="border-radius: 10px;" alt="">
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="test_box">
-                                          <img src="images/img1.jpg" class="img-fluid" style="border-radius: 10px;" alt="">
+                                          <img src="{{url('frontend/images/img1.jpg')}}" class="img-fluid" style="border-radius: 10px;" alt="">
                                        </div>
                                     </div>
                                  </div>
@@ -164,17 +171,17 @@
                   <div class="row">
                      <div class="col-md-12">
                         <div class="img_box">
-                           <figure><img src="images/img1.jpg" alt="#"/></figure>
+                           <figure><img src="{{url('frontend/images/img1.jpg')}}" alt="#"/></figure>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="img_box">
-                           <figure><img src="images/img2.jpg" alt="#"/></figure>
+                           <figure><img src="{{url('frontend/images/img2.jpg')}}" alt="#"/></figure>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="img_box">
-                           <figure><img src="images/img3.jpg" alt="#"/></figure>
+                           <figure><img src="{{url('frontend/images/img3.jpg')}}" alt="#"/></figure>
                         </div>
                      </div>
                   </div>
@@ -190,7 +197,7 @@
             <div class="row d_flex">
                <div class="col-md-6">
                   <div class="img_box">
-                     <figure><img src="images/img4.jpg" alt="#"/></figure>
+                     <figure><img src="{{url('frontend/images/img4.jpg')}}" alt="#"/></figure>
                   </div>
                </div>
                <div class="col-md-6">
@@ -220,7 +227,7 @@
                </div>
                <div class="col-md-6">
                   <div class="about_img">
-                     <figure><img src="images/about_img.jpg" alt="#"/></figure>
+                     <figure><img src="{{url('frontend/images/about_im')}}g.jpg" alt="#"/></figure>
                   </div>
                </div>
             </div>
@@ -253,14 +260,14 @@
                                     <div class="col-md-6 margin_boot">
                                        <div class="test_box">
                                           <h4>Mark jonson</h4>
-                                          <i><img src="images/te1.png" alt="#"/></i>
+                                          <i><img src="{{url('frontend/images/te1.png"')}} alt="#"/></i>
                                           <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="test_box">
                                           <h4>Mac Du</h4>
-                                          <i><img src="images/te1.png" alt="#"/></i>
+                                          <i><img src="{{url('frontend/images/te1.png"')}} alt="#"/></i>
                                           <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
                                        </div>
                                     </div>
@@ -275,14 +282,14 @@
                                     <div class="col-md-6 margin_boot">
                                        <div class="test_box">
                                           <h4>Mark jonson</h4>
-                                          <i><img src="images/te1.png" alt="#"/></i>
+                                          <i><img src="{{url('frontend/images/te1.png"')}} alt="#"/></i>
                                           <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="test_box">
                                           <h4>Mac Du</h4>
-                                          <i><img src="images/te1.png" alt="#"/></i>
+                                          <i><img src="{{url('frontend/images/te1.png"')}} alt="#"/></i>
                                           <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
                                        </div>
                                     </div>
@@ -297,14 +304,14 @@
                                     <div class="col-md-6 margin_boot">
                                        <div class="test_box">
                                           <h4>Mark jonson</h4>
-                                          <i><img src="images/te1.png" alt="#"/></i>
+                                          <i><img src="{{url('frontend/images/te1.png"')}} alt="#"/></i>
                                           <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="test_box">
                                           <h4>Mac Du</h4>
-                                          <i><img src="images/te1.png" alt="#"/></i>
+                                          <i><img src="{{url('frontend/images/te1.png"')}} alt="#"/></i>
                                           <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
                                        </div>
                                     </div>
@@ -327,4 +334,5 @@
          </div>
       </div>
       <!-- end testimonial -->
+
 @endsection

@@ -31,9 +31,10 @@
    </head>
    <!-- body -->
    <body class="main-layout">
+      <?php $temp = 'Untitled24.png';  ?>
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+         <div class="loader"><img src="{{asset('')}}img/hotel/{{$temp}}" alt="#" /></div>
       </div>
       <!-- end loader -->
 
