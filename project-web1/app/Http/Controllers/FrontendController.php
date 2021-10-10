@@ -69,6 +69,7 @@ class FrontendController extends Controller
         return view('frontend.layout.details')->with('hotel_search', $hotel);
 
     }
+
     function postSearchAjax(Request $request)
     {
         if ($request->get('query')) {
@@ -96,4 +97,18 @@ class FrontendController extends Controller
         ->where('name', 'LIKE',  '%'.$query.'%') ->get();
         return View('Frontend.layout.hotel.all-hotel-search')->with('all_hotel',$all_hotel);
     } 
+
+
+    /**
+     * Payment hotel by id
+     */
+    public function paymentHotelById($id){
+        $hotel = DB::table('hotel')
+        ->join('location','location.location_id','=','hotel.location')
+        ->select('hotel.*','location.*')
+        ->where('hotel_id', $id)->get();
+
+        return view('frontend.layout.payment')->with('hotel', $hotel);
+    }
+
 }
