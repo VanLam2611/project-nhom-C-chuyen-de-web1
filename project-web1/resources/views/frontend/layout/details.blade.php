@@ -16,7 +16,7 @@
                   </div>
                </div>
                <div class="col-md-12">
-                  <div class="search-wrapper">
+                  <div class="search-wrapper active">
                      <div class="input-holder">
                          <form  action="#">
                            <input type="text" class="search-input" placeholder="Type to search" />
@@ -42,6 +42,48 @@
 				</div>
 			</div>
 			<div class="row">
+            <!-- Set person in home page -->
+            <?php
+               if(isset($hotel_search)){
+                  foreach($hotel_search as $value) { ?>
+                  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-xxs-12 mb-5">
+                     <div class="tm-home-box-2">						
+                        <img src="{{asset('')}}frontend/images/{{$value->image}}" alt="image" class="img-responsive">
+                        <h3><?= $value->name?></h3>
+                        <div class="d-flex">
+                           <div class="w-50">
+                              <p class="tm-date"><?= $value->created_at ?></p>
+                           </div>
+                           <div class="w-50 text-right">
+                              <div class="wrapper">
+                                 <input name="ratingRadio" type="radio" id="st1" value="1" />
+                                 <label for="st1"></label>
+                                 <input name="ratingRadio" type="radio" id="st2" value="2" />
+                                 <label for="st2"></label>
+                                 <input name="ratingRadio" type="radio" id="st3" value="3" />
+                                 <label for="st3"></label>
+                                 <input name="ratingRadio" type="radio" id="st4" value="4" />
+                                 <label for="st4"></label>
+                                 <input name="ratingRadio" type="radio" id="st5" value="5" />
+                                 <label for="st5"></label>
+                              </div>
+                           </div>
+                           
+                        </div>
+                        <div class="location">
+                           <i class="fa fa-map-marker" aria-hidden="true"></i>
+                           <?= $value->location ?>
+                        </div>
+                        <div class="tm-home-box-2-container">
+                           <a href="#" class="tm-home-box-2-link"><i class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
+                           <a href="detail.html" class="tm-home-box-2-link"><span class="tm-home-box-2-description">Travel</span></a>
+                           <a href="detail.html" class="tm-home-box-2-link"><i class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
+                        </div>
+                     </div>
+                  </div>
+            <?php   }}
+            else{
+            ?>
 				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-xxs-12 mb-5">
 					<div class="tm-home-box-2">						
 						<img src="images/img4.jpg" alt="image" class="img-responsive">
@@ -217,6 +259,8 @@
 						</div>
 					</div>
 				</div>
+
+            <?php } ?>
 			</div>		
 		</div>
 

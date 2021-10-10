@@ -21,10 +21,10 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item">
-                                 <a class="nav-link" href="index.html">Home</a>
+                                 <a class="nav-link" href="{{asset('/')}}">Home</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{route('frontend.dashboard.index.allhotel')}}">Hotel</a>
+                                 <a class="nav-link" href="{{asset('hotel')}}">Hotel</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="#about">About</a>

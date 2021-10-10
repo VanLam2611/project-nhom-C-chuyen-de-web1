@@ -6,7 +6,6 @@ use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -62,7 +61,11 @@ class FrontendController extends Controller
      * Show hotel in option -- Home --
      */
     public function rentalHotelOption(Request $request){
-        $hotel =  DB::table('hotel')->where('person', $request->person)->get();
+        $hotel = DB::table('hotel')
+        ->join('location','location.location_id','=','hotel.location')
+        ->select('hotel.*','location.*')
+        ->where('person', $request->person)->get();
+
         return view('frontend.layout.details')->with('hotel_search', $hotel);
 
     }
