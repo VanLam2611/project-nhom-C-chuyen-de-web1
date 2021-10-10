@@ -15,10 +15,10 @@
             <div class="col-md-12">
                 <div class="search-wrapper active">
                     <div class="input-holder fsearch">
-                        <form method="GET" action="{{route('frontend.dashboard.index.allhotel.search')}}">
-                            <input type="text" name="query" list="brows" id="fsearchh" class="search-input" placeholder="Type to search" />
-                            <datalist id="brows" style="visibility: hidden; height:0px !important;">
-
+                        <form method="GET" action="">
+                            <input type="text" list="brows" id="fsearchh" class="search-input" placeholder="Type to search" />
+                            <datalist id="brows">
+                           
                             </datalist>
                             <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
                         </form>
@@ -89,22 +89,8 @@
             
         </div>
     </div>
-        {{$all_hotel->links() }}
-    <!-- <div class="row mt-5">
-        <div class="col text-center">
-            <div class="block-27">
-                <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                </ul>
-            </div>
-        </div>
-    </div> -->
+     
+   
 </section>
 <script>
     // search

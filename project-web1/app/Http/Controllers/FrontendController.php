@@ -66,4 +66,31 @@ class FrontendController extends Controller
         return view('frontend.layout.details')->with('hotel_search', $hotel);
 
     }
+    function postSearchAjax(Request $request)
+    {
+        if ($request->get('query')) {
+            $query = $request->get('query');
+            $data = DB::table('hotel')
+                ->where('name', 'LIKE', "%{$query}%")->orWhere('hotel_info', 'LIKE', "%{$query}%")
+                ->get();
+            // $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+            foreach ($data as $row) {
+                $output = '
+                <option value="'.$row->name.'">'.$row->hotel_info.'</option>';
+            }
+            echo $output;
+        }
+    }
+    public function getAllHotelSearch(Request $request)
+    {
+        $query = "";
+         if ($request->has('query')) {
+            $query = $request->query;
+        }
+        
+        $all_hotel = DB::table('hotel')
+        
+        ->where('name', 'LIKE',  '%'.$query.'%') ->get();
+        return View('Frontend.layout.hotel.all-hotel-search')->with('all_hotel',$all_hotel);
+    } 
 }

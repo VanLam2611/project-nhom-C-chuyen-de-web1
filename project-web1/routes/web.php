@@ -94,8 +94,10 @@ Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "Ap
 Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "App\Http\Controllers"], function () {
 
     Route::get("/", ["as" => "frontend.dashboard.index", "uses" => "FrontendController@getIndex"]);
+    Route::post('/search', ["as" => "search", "uses" => "FrontendController@postSearchAjax"]);
 
     Route::get("/hotel", ["as" => "frontend.dashboard.index.allhotel", "uses" => "FrontendController@getAllHotel"]);
+    Route::get("/hotel/search", ["as" => "frontend.dashboard.index.allhotel.search", "uses" => "FrontendController@getAllHotelSearch"]);
     Route::get("/detail/{id}", ["as" => "frontend.dashboard.index.detailhotel", "uses" => "FrontendController@getDetailHotel"]);
 
     Route::post("/details", ["as" => "frontend.dashboard.index", "uses" => "FrontendController@rentalHotelOption"]);
