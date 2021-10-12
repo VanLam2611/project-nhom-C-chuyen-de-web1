@@ -3,6 +3,7 @@ body {
     color: #1a202c;
     text-align: left;
     background: linear-gradient(147deg,#f6b323 0%, #f23b26 74%) !important;
+    background-repeat: no-repeat !important;
 }
 
 .main-body {
@@ -220,7 +221,7 @@ a.btn-info:hover {
 .shadow-none {
     box-shadow: none!important;
 }
-
+/* end gutters */
 /* coupons */
 
 section {
