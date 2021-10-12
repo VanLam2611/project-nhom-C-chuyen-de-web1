@@ -51,7 +51,7 @@
                                  <div id="google_translate_element2"></div>
                               </li>
                            </ul>
-                           <div class="sign_btn"><a href="#">Sign in</a></div>
+                           <div class="sign_btn"><a href="{{asset('login')}}">Sign in</a></div>
                         </div>
                      </nav>
                   </div>
