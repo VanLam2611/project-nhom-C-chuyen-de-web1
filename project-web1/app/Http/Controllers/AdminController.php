@@ -21,19 +21,21 @@ class AdminController extends Controller
 {
     public function AuthLogin()
     {
-        $admin_id = Session::get('id');
+        $admin_id = Auth::user()->id;
+        
+        $admin_role = Auth::user()->role;
+        
+       
 
-        $admin_role = Session::get('role');
-
-        if ($admin_id) {
+        if (Auth::check()) {
             if ($admin_role == '1') {
-                $admin_name = DB::table('users')->where('id', $admin_id)->first();
-                return Redirect::to('/admin/tc')->with(compact('admin_name'));
+                $admin_name = DB::table('users_web')->where('id', $admin_id)->first();
+                return Redirect::to('/dashboard')->with(compact('admin_name'))->send();
             } else {
                 return Redirect::to('/')->send();
             }
         } else {
-            return Redirect::to('/logout-checkout')->send();
+            return Redirect::to('/logout/user')->send();
         }
     }
     public function getNameAdmin()
@@ -43,7 +45,11 @@ class AdminController extends Controller
     }
     public function getIndexAdmin()
     {
-       
+        $admin_role = Auth::user()->role;
+        if($admin_role != 1)
+        {
+            return Redirect::to('/');
+        }
         return view('backend.layouts.index');
     }
     public function LogoutAdmin()
@@ -53,7 +59,11 @@ class AdminController extends Controller
     }
     public function getAllHotel()
     {
-      
+        $admin_role = Auth::user()->role;
+        if($admin_role != 1)
+        {
+            return Redirect::to('/');
+        }
         $all_hotel = DB::table("hotel")
              ->join('categories', 'categories.categories_id', '=', 'hotel.type_name')
             
@@ -65,12 +75,21 @@ class AdminController extends Controller
     }
     public function AddHotel(Request $request)
     {
+        $admin_role = Auth::user()->role;
+        if($admin_role != 1)
+        {
+            return Redirect::to('/');
+        }
         $type = DB::table("categories")->get();
         return view('backend.layouts.Hotel.addHotel')->with('type', $type);
     }
     public function getSaveHotel(Request $request)
     {
-    
+        $admin_role = Auth::user()->role;
+        if($admin_role != 1)
+        {
+            return Redirect::to('/');
+        }
         $data = array();
         $data['name'] = $request->name;
         $data['type_name'] = $request->type;
@@ -94,6 +113,11 @@ class AdminController extends Controller
     }
     public function EditHotel($id)
     {
+        $admin_role = Auth::user()->role;
+        if($admin_role != 1)
+        {
+            return Redirect::to('/');
+        }
         $type = DB::table("categories")->get();
         $id = substr($id,9);
         $edit_hotel =  DB::table("hotel")->where('hotel_id', $id)->get();
@@ -101,7 +125,11 @@ class AdminController extends Controller
     }
     public function UpdateHotel(Request $request, $id)
     {
-       
+        $admin_role = Auth::user()->role;
+        if($admin_role != 1)
+        {
+            return Redirect::to('/');
+        }
         $data = array();
         $data['name'] = $request->name;
         $data['status'] = 0;
@@ -124,6 +152,11 @@ class AdminController extends Controller
     }
     public function DeleteHotel($id)
     {
+        $admin_role = Auth::user()->role;
+        if($admin_role != 1)
+        {
+            return Redirect::to('/');
+        }
         // $this->AuthLogin();
         // $admin_id = Session::get('id');
         // $admin_name = DB::table('users')->where('id', $admin_id)->first();

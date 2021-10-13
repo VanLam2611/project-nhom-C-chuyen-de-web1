@@ -93,6 +93,13 @@ Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "Ap
 */
 Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "App\Http\Controllers"], function () {
 
+    Route::get("/login/user", ["as" => "frontend.login.index", "uses" => "FrontendController@getLogin"]);
+    Route::get("/logout/user", ["as" => "frontend.logout.index", "uses" => "FrontendController@logout"]);
+    Route::post("/login/user", ["as" => "frontend.login.post", "uses" => "FrontendController@postLogin"]);
+    Route::get("/register/user", ["as" => "frontend.register.index", "uses" => "FrontendController@getRegister"]);
+    Route::post("/register/user", ["as" => "frontend.register.index", "uses" => "FrontendController@postRegister"]);
+    Route::get("/registerpassword", ["as" => "frontend.registerpassword.index", "uses" => "FrontendController@register_accuracy"]);
+    Route::get("/verycode/user", ["as" => "frontend.verycode.index", "uses" => "FrontendController@getVerycode"]);
     Route::get("/", ["as" => "frontend.dashboard.index", "uses" => "FrontendController@getIndex"]);
     Route::post('/search', ["as" => "search", "uses" => "FrontendController@postSearchAjax"]);
 
