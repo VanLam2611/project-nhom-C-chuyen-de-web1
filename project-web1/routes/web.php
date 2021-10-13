@@ -92,7 +92,7 @@ Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "Ap
 });
 /*
 ********************************************************************
-*******************ROUTE Ở PHẦN GIAO DIỆN ADMIN********************
+*******************ROUTE Ở PHẦN GIAO DIỆN User********************
 ********************************************************************
 */
 Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "App\Http\Controllers"], function () {
@@ -112,6 +112,7 @@ Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "Ap
     Route::get("/detail/{id}", ["as" => "frontend.dashboard.index.detailhotel", "uses" => "FrontendController@getDetailHotel"]);
 
     Route::post("/details", ["as" => "frontend.dashboard.index.person", "uses" => "FrontendController@rentalHotelOption"]);
+    Route::get("/profile", ["as" => "frontend.dashboard.index.profile", "uses" => "FrontendController@getProfile"]);
 
     //Payment hotel
     Route::get("/payment/{id}", ["as" => "frontend.dashboard.index.payment", "uses" => "FrontendController@paymentHotelById"]);

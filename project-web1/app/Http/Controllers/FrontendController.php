@@ -48,6 +48,11 @@ class FrontendController extends Controller
         };
         return View('Frontend.layout.login.login');
     }
+    public function getProfile(){
+        
+        
+        return View('Frontend.layout.Account.profile');
+    }
     public function postLogin(Request $request){
         $arr = [
             'email' => $request->email,
