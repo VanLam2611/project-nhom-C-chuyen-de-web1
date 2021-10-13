@@ -113,4 +113,11 @@ class UsersController extends Controller
         
         return Redirect::to('/users')->with([ "message" => "Delete thành công!"]);
     }
+    public function getFavorite()
+    {
+       
+      
+      
+        return view('frontend.layout.favorite.index');
+    }
 }

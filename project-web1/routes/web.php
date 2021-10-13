@@ -82,6 +82,10 @@ Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "Ap
             Route::get("edit/{id}", ["as" => "admin.users.edit", "uses" => "UsersController@EditUser"]);
             Route::post("update/{id}", ["as" => "admin.users.eidt", "uses" => "UsersController@UpdateUser"]);
         });
+        Route::group(["prefix" => "favorite"], function() {
+            Route::get("/", ["as" => "admin.favorite", "uses" => "UsersController@getFavorite"]);
+           
+        });
     });
 
 

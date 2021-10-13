@@ -19,14 +19,15 @@ class FrontendController extends Controller
 {
     public function AuthLogin()
     {
-        $admin_id = Auth::user()->id;
+      
         
-        $admin_role = Auth::user()->role;
+     
         
         if (Auth::check()) {
+            $admin_role = Auth::user()->role;
             if ($admin_role == '1') {
-                $admin_name = DB::table('users_web')->where('id', $admin_id)->first();
-                return Redirect::to('/dashboard')->with(compact('admin_name'))->send();
+             
+                return Redirect::to('/dashboard')->send();
             } else {
                 return Redirect::to('/');
             }

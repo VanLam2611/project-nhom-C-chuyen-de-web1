@@ -10,7 +10,7 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo">
-                                    <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                                    <a href="{{asset('/')}}"><img src="{{url('frontend/images/logo.png')}}" alt="#" /></a>
                                 </div>
                             </div>
                         </div>
@@ -25,10 +25,10 @@
                             <div class="collapse navbar-collapse" id="navbarsExample04">
                                 <ul class="navbar-nav mr-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">Home</a>
+                                        <a class="nav-link" href="{{asset('/')}}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="search.html">Hotel</a>
+                                        <a class="nav-link" href="{{asset('hotel')}}">Hotel</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#about">About</a>
@@ -60,15 +60,16 @@
                                     </li>
                                 </ul>
                                 <div class="btn_user"><a href="#"
-                                        style="background-image: url('images/person_1.jpg');"></a></div>
+                                        style="background-image: url('frontend/images/person_1.jpg');"></a></div>
                                 <div class="dropdown">
                                     <div class="name_user"><a href="#" class="dropdown-toggle nav-link" type="button"
                                             id="user_rental" data-toggle="collapse" data-target="#navbarsExample06"
                                             aria-controls="navbarsExample06" aria-expanded="false"
-                                            aria-label="Toggle navigation">Van Lam</a></div>
+                                            aria-label="Toggle navigation">{{Auth::user()->username}}</a></div>
                                     <div class="dropdown-menu" aria-labelledby="user_rental" id="navbarsExample06">
                                         <a class="dropdown-item" href="#">Profile</a>
-                                        <a class="dropdown-item" href="#">Favorite</a>
+                                        <a class="dropdown-item" href="{{route('admin.favorite')}}">Favorite</a>
+                                        <a class="dropdown-item" href="{{route('frontend.logout.index')}}">Logout</a>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +138,7 @@
                                  <div id="google_translate_element2"></div>
                               </li>
                            </ul>
-                           <div class="sign_btn"><a href="{{asset('login')}}">Sign in</a></div>
+                           <div class="sign_btn"><a href="{{asset('login/user')}}">Sign in</a></div>
                         </div>
                      </nav>
                   </div>
