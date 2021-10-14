@@ -142,9 +142,10 @@ class AdminController extends Controller
             return Redirect::to('/');
         }
         $type = DB::table("categories")->get();
+        $location = DB::table("location")->get();
         $id = substr($id,9);
         $edit_hotel =  DB::table("hotel")->where('hotel_id', $id)->get();
-        return view('backend.layouts.Hotel.editHotel')->with('edit_hotel', $edit_hotel)->with('type', $type);
+        return view('backend.layouts.Hotel.editHotel')->with('edit_hotel', $edit_hotel)->with('type', $type)->with('location', $location);
     }
     public function UpdateHotel(Request $request, $id)
     {

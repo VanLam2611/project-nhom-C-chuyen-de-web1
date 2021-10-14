@@ -264,5 +264,15 @@ class FrontendController extends Controller
 
         return view('frontend.layout.payment')->with('hotel', $hotel);
     }
+    public function payment_succsess($id){
+        $this->AuthLogin();
+        $hotel = DB::table('hotel')
+        ->join('location','location.location_id','=','hotel.location')
+        ->select('hotel.*','location.*')
+        ->where('hotel_id', $id)->get();
+        session()->flash('message', 'You are payment hotel successfully!!');
+        return view('frontend.layout.payment')->with('hotel', $hotel);
+    }
 
 }
+
