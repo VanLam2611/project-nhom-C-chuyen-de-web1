@@ -34,7 +34,7 @@
    </head>
    <!-- body -->
    <body class="main-layout">
-      <?php $temp = 'Untitled24.png';  ?>
+      <?php $temp = 'tai-xuong-3png-1634191828.png';  ?>
       <!-- loader  -->
       <div class="loader_bg">
          <div class="loader"><img src="{{asset('')}}img/hotel/{{$temp}}" alt="#" /></div>

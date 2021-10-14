@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -57,7 +58,7 @@ class UsersController extends Controller
             $data = array();
             $data['username'] = $request->name;
             $data['email'] = $request->email;
-            $data['password'] = md5($request->password);
+            $data['password'] = Hash::make(($request->password));
             $data['role'] = 0;
             $data['very_email'] = 0;
             DB::table('users_web')->insert($data);
