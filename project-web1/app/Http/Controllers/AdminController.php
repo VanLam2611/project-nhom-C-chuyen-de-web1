@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\UploadedFile;
 use App\shipping;
 use App\Product;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManagerStatic as Image;
 use App\User;
 use Illuminate\Support\Facades\App;
 
@@ -81,7 +84,8 @@ class AdminController extends Controller
             return Redirect::to('/');
         }
         $type = DB::table("categories")->get();
-        return view('backend.layouts.Hotel.addHotel')->with('type', $type);
+        $location = DB::table("location")->get();
+        return view('backend.layouts.Hotel.addHotel')->with('type', $type)->with('location', $location);
     }
     public function getSaveHotel(Request $request)
     {
@@ -93,20 +97,39 @@ class AdminController extends Controller
         $data = array();
         $data['name'] = $request->name;
         $data['type_name'] = $request->type;
+        $data['location'] = $request->location;
+        $data['person'] = $request->person;
+        $data['room'] = $request->room;
+        $data['services'] = $request->service;
+        $data['hotel_info'] = $request->hotel_info;
+        $data['money_day'] = $request->money_day;
         $data['status'] = 0;
        
-        $get_image = $request->file('product_image');
-        if ($get_image) {
-            $get_name = $get_image->getClientOriginalName();
-            $name_image = current(explode('.', $get_name));
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('img/hotel/', $new_image);
-            $data['image'] = $new_image;
+        if ($request->hasFile('product_image')) {
+            $file = $request->product_image;
+            $file_name = Str::slug($file->getClientOriginalName(), "-") . "-" . time() . "." . $file->getClientOriginalExtension();
+            $file_name_2 = "press".Str::slug($file->getClientOriginalName(), "-") . "-" . time() . "." . $file->getClientOriginalExtension();
+            //$file_name_3 = "teacher".Str::slug($file->getClientOriginalName(), "-") . "-" . time() . "." . $file->getClientOriginalExtension();
+            //resize file befor to upload large
+                if ($file->getClientOriginalExtension() != "svg") {
+                    // $image_resize = Image::make($file->getRealPath());
+                    // $thumb_size = json_decode($settings["THUMB_SIZE_TEACHERS"]);
+                    // $image_resize->fit($thumb_size->width, $thumb_size->height);
+                    // $image_resize->save('public/upload/images/teachers/thumb/' . $file_name);
+
+                    $image_resize_2 = Image::make($file->getRealPath());
+                    $image_resize_2->fit(631, 530);
+                    $image_resize_2->save('img/hotel/' . $file_name_2);
+                }   
+            // close upload image
+            $file->move("img/hotel/", $file_name);
+            //save database
+            $data['image'] = $file_name_2;
             DB::table('hotel')->insert($data);
-          
             return Redirect::to('/hotels')->with([ "message" => "Thêm thành công!"]);;
-        }
-        $data['image'] = '';
+    
+            }
+            $data['image'] ="";
         DB::table('hotel')->insert($data);
         
         return Redirect::to('/hotels')->with([ "message" => "Thêm thành công!"]);;
@@ -132,20 +155,41 @@ class AdminController extends Controller
         }
         $data = array();
         $data['name'] = $request->name;
+        $data['type_name'] = $request->type;
         $data['status'] = 0;
-      
-        $get_image = $request->file('product_image');
-        if ($get_image) {
-            $get_name = $get_image->getClientOriginalName();
-            $name_image = current(explode('.', $get_name));
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('img/hotel/', $new_image);
-            $data['image'] = $new_image;
+        $data['location'] = $request->location;
+        $data['person'] = $request->person;
+        $data['room'] = $request->room;
+        $data['services'] = $request->service;
+        $data['hotel_info'] = $request->hotel_info;
+        $data['money_day'] = $request->money_day;
+        $data['status'] = 0;
+       
+        if ($request->hasFile('product_image')) {
+            $file = $request->image;
+            $file_name = Str::slug($file->getClientOriginalName(), "-") . "-" . time() . "." . $file->getClientOriginalExtension();
+            $file_name_2 = "press".Str::slug($file->getClientOriginalName(), "-") . "-" . time() . "." . $file->getClientOriginalExtension();
+            //$file_name_3 = "teacher".Str::slug($file->getClientOriginalName(), "-") . "-" . time() . "." . $file->getClientOriginalExtension();
+            //resize file befor to upload large
+                if ($file->getClientOriginalExtension() != "svg") {
+                    // $image_resize = Image::make($file->getRealPath());
+                    // $thumb_size = json_decode($settings["THUMB_SIZE_TEACHERS"]);
+                    // $image_resize->fit($thumb_size->width, $thumb_size->height);
+                    // $image_resize->save('public/upload/images/teachers/thumb/' . $file_name);
+
+                    $image_resize_2 = Image::make($file->getRealPath());
+                    $image_resize_2->fit(631, 530);
+                    $image_resize_2->save('img/hotel/' . $file_name_2);
+                }   
+            // close upload image
+            $file->move("img/hotel/", $file_name);
+            //save database
+            $data['image'] = $file_name_2;
             DB::table('hotel')->where('hotel_id', $id)->update($data);
-          
-            return Redirect::to('/hotels')->with([ "message" => "Cập Nhập thành công!"]);
-        }
         
+            return Redirect::to('/hotels')->with(["message" => "Cập Nhập thành công!"]);
+    
+            }
         DB::table('hotel')->where('hotel_id', $id)->update($data);
         
         return Redirect::to('/hotels')->with(["message" => "Cập Nhập thành công!"]);

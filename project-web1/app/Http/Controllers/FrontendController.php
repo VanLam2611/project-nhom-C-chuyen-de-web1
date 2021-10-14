@@ -195,7 +195,13 @@ class FrontendController extends Controller
             $total_rating += $value->number_rating;
 
         }
-        $rating_hotel = ceil($total_rating/$count);
+        if($count != 0){
+            $rating_hotel = ceil($total_rating/$count);
+        }
+        else{
+            $rating_hotel =0;
+        }
+       
         return $rating_hotel;
 
         return view('frontend.layout.index');
