@@ -4,6 +4,7 @@
       <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       <!-- mobile metas -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -28,11 +29,12 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="stylesheet" href="{{url('frontend/css/media.css')}}">
       <link rel="stylesheet" href="{{url('frontend/css/search.css')}}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
    </head>
    <!-- body -->
    <body class="main-layout">
-      <?php $temp = 'Untitled24.png';  ?>
+      <?php $temp = 'tai-xuong-3png-1634191828.png';  ?>
       <!-- loader  -->
       <div class="loader_bg">
          <div class="loader"><img src="{{asset('')}}img/hotel/{{$temp}}" alt="#" /></div>
