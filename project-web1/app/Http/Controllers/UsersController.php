@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -13,11 +14,11 @@ class UsersController extends Controller
         // $this->AuthLogin();
         // $admin_id = Session::get('id');
         // $admin_name = DB::table('users')->where('id', $admin_id)->first();
-        $user = DB::table("users")
+        $user = DB::table("users_web")
             // ->join('protypes', 'protypes.id', '=', 'products.type_id')
             // ->join('manufactures', 'manufactures.id', '=', 'products.manu_id')
-             ->select('users.*');
-        $user = $user->orderBy("users.id", "Desc");
+             ->select('users_web.*');
+        $user = $user->orderBy("users_web.id", "Desc");
 
         $user = $user->paginate(15);
         return view('backend.layouts.Users.AllUser')->with('user', $user);
@@ -52,13 +53,15 @@ class UsersController extends Controller
         // $this->AuthLogin();
         // $admin_id = Session::get('id');
         // $admin_name = DB::table('users')->where('id', $admin_id)->first();
-        $checkemail = DB::table('users')->where('email',$request->email)->first();
+        $checkemail = DB::table('users_web')->where('email',$request->email)->first();
         if($checkemail == null){
             $data = array();
-            $data['name'] = $request->name;
+            $data['username'] = $request->name;
             $data['email'] = $request->email;
-            $data['password'] = md5($request->password);
-            DB::table('users')->insert($data);
+            $data['password'] = Hash::make(($request->password));
+            $data['role'] = 0;
+            $data['very_email'] = 0;
+            DB::table('users_web')->insert($data);
             return Redirect::to('/users')->with([ "message" => "Thêm thành công!"]);;
     
         }
@@ -69,7 +72,7 @@ class UsersController extends Controller
     {
        
         $id = substr($id,9);
-        $user =  DB::table("users")->where('id', $id)->get();
+        $user =  DB::table("users_web")->where('id', $id)->get();
         return view('backend.layouts.Users.editUser')->with('user', $user);
     }
     public function UpdateUser(Request $request, $id)
@@ -87,13 +90,13 @@ class UsersController extends Controller
             "re-password.same" => "Mật khẩu không khớp"
 
         ]);
-        $checkemail = DB::table('users')->where('email',$request->email)->first();
+        $checkemail = DB::table('users_web')->where('email',$request->email)->first();
         if($checkemail == null){
         $data = array();
-        $data['name'] = $request->name;
+        $data['username'] = $request->name;
         $data['email'] = $request->email;
         $data['password'] = md5($request->password);
-        DB::table('users')->where('id', $id)->update($data);
+        DB::table('users_web')->where('id', $id)->update($data);
         return Redirect::to('/users')->with(["message" => "Cập Nhập thành công!"]);
         }
        
@@ -108,9 +111,16 @@ class UsersController extends Controller
         $key = substr($id,0,9);
         $id = substr($id,9);
         
-        DB::table('users')->where('id', $id)->delete();
+        DB::table('users_web')->where('id', $id)->delete();
 
         
         return Redirect::to('/users')->with([ "message" => "Delete thành công!"]);
+    }
+    public function getFavorite()
+    {
+       
+      
+      
+        return view('frontend.layout.favorite.index');
     }
 }

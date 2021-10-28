@@ -49,6 +49,15 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'users_web' => [
+            'driver' => 'session',
+            'provider' => 'users_web',
+        ],
+        'users_web-api' => [
+            'driver' => 'token',
+            'provider' => 'users_web',
+        ],
     ],
 
     /*
@@ -72,6 +81,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'users_web' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Users_web::class,
         ],
 
         // 'users' => [
