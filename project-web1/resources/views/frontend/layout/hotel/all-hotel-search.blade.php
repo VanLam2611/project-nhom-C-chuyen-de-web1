@@ -15,10 +15,10 @@
             <div class="col-md-12">
                 <div class="search-wrapper active">
                     <div class="input-holder fsearch">
-                        <form method="GET" action="">
-                            <input type="text" list="brows" id="fsearchh" class="search-input" placeholder="Type to search" />
-                            <datalist id="brows">
-                           
+                    <form method="GET" action="{{route('frontend.dashboard.index.allhotel.search')}}">
+                            <input type="text" name="query" list="brows" id="fsearchh" class="search-input" placeholder="Type to search" />
+                            <datalist id="brows" style="visibility: hidden; height:0px !important;">
+
                             </datalist>
                             <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
                         </form>
@@ -47,6 +47,7 @@
                 </div>
             </div>
         </div>
+        @if($all_hotel != null)
         <div class="row">
             @foreach($all_hotel as $hotel)
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-xxs-12 mb-5">
@@ -88,6 +89,9 @@
          
             
         </div>
+        @else
+        <h3>Không tìm thấy</h3>
+        @endif
     </div>
      
    

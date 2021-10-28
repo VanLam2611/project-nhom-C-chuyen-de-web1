@@ -241,13 +241,15 @@ class FrontendController extends Controller
     {
         $this->AuthLogin();
         $query = "";
-         if ($request->has('query')) {
-            $query = $request->query;
+         if ($request->get('query')) {
+            $query = $request->get('query');
         }
         
         $all_hotel = DB::table('hotel')
-        
-        ->where('name', 'LIKE',  '%'.$query.'%') ->get();
+        ->join('location','location.location_id','=','hotel.location')
+        ->select('hotel.*','location.*')
+        ->where('name', 'LIKE', "%{$query}%") ->get();
+
         return View('Frontend.layout.hotel.all-hotel-search')->with('all_hotel',$all_hotel);
     } 
 
