@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\UploadedFile;
 use App\shipping;
 use App\Product;
+
+
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
+
 use App\User;
 use Illuminate\Support\Facades\App;
 
