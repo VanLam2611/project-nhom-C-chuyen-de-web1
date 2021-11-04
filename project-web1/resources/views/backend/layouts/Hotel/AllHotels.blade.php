@@ -39,7 +39,7 @@
                     {{ session()->get('message') }}
                 </div>
                 @endif
-
+               
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -116,7 +116,7 @@
                         <!-- <td>{{ $loop->index + 1 }}</td> -->
                           <td><img src="img/hotel/{{$hotel->image}}" height="100" width="100" alt=""></td>
                        
-                          <td>{{$hotel->name}}</td>
+                          <td> {{$hotel->name}}</td>
                           <td>{{$hotel->categories_name}}</td>
                           <td>{{$hotel->status}}</td>
                          

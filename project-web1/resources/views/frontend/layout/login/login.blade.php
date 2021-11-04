@@ -17,7 +17,7 @@
     <form action="{{route('frontend.login.post')}}" method="post">
     @csrf
     @if(session()->has('message'))
-       <div class="alert alert-success">
+       <div class="alert alert-success" style="color: #fdfcfc !important;">
          {{ session()->get('message') }}
        </div>
        @endif  
