@@ -88,7 +88,46 @@
                                             </select> *
                                         </div>
                                         </div>
-
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Location<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                            <select class="form-control" name="location" id="cate">
+                                                @foreach($location as $location)
+                                            <option value="{{$location->location_id}}">{{$location->address}}</option>
+                                           @endforeach
+                                            </select> *
+                                        </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">person<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="person" placeholder="...." required="required" />
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Room<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="room" placeholder="...." required="required" />
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Service<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="service" placeholder="...." required="required" />
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Hotel infomation<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="hotel_info" placeholder="...." required="required" />
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Money in day<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="money_day" placeholder="...." required="required" />
+                                    </div>
+                                </div>
                             
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Image product<span class="required">*</span></label>

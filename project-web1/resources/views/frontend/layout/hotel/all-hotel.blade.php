@@ -14,9 +14,12 @@
             </div>
             <div class="col-md-12">
                 <div class="search-wrapper active">
-                    <div class="input-holder">
-                        <form method="GET" action="search.html">
-                            <input type="text" class="search-input" placeholder="Type to search" />
+                    <div class="input-holder fsearch">
+                        <form method="GET" action="{{route('frontend.dashboard.index.allhotel.search')}}">
+                            <input type="text" name="query" list="brows" id="fsearchh" class="search-input" placeholder="Type to search" />
+                            <datalist id="brows" style="visibility: hidden; height:0px !important;">
+
+                            </datalist>
                             <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
                         </form>
                     </div>
@@ -48,7 +51,7 @@
             @foreach($all_hotel as $hotel)
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-xxs-12 mb-5">
                 <div class="tm-home-box-2">
-                    <img src="{{asset('')}}frontend/images/{{$hotel->image}}  " alt="image" class="img-responsive">
+                    <img src="{{asset('')}}img/hotel/{{$hotel->image}}  " alt="image" class="img-responsive">
                     <h3>{{$hotel->name}}</h3>
                     <div class="d-flex">
                         <div class="w-50">
@@ -103,4 +106,32 @@
         </div>
     </div> -->
 </section>
+<script>
+    // search
+    $(document).ready(function() {
+        $('#fsearchh').keyup(function() {
+            var query = $(this).val();
+            console.log("ngon");
+            if (query != '') {
+                var _token = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: "{{ route('search') }}",
+                    method: "POST",
+                    data: {
+                        query: query,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        $('#brows').fadeIn();
+                        $('#brows').html(data);
+                    }
+                });
+            }
+        });
+        $(document).on('click', 'option', function() {
+            $('#fsearchh').val($(this).text());
+            $('#brows').fadeOut();
+        });
+    });
+</script>
 @endsection
