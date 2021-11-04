@@ -261,7 +261,8 @@
         </div>
     </div>
     <div class="col-md-4">
-        <form method="GET" action="{{asset('')}}payment/{{$all_hotel->hotel_id}}" class="form_book detail" style="margin-top: 0!important;padding: 20px !important;border: 1px solid #000;">
+    <?php $key = rand(111111111,999999999); ?>
+        <form method="GET" action="{{asset('')}}payment/{{$key}}{{$all_hotel->hotel_id}}" class="form_book detail" style="margin-top: 0!important;padding: 20px !important;border: 1px solid #000;">
             <div class="w-100">
                 <label class="date">ARRIVAL DATE</label>
                 <input class="book_n" type="date">

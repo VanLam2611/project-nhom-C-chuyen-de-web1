@@ -173,6 +173,7 @@ class FrontendController extends Controller
     } 
     public function getDetailHotel($id)
     {
+        $id = substr($id,9);
         $this->AuthLogin();
         $all_hotel = DB::table('hotel')
         ->join('location','location.location_id','=','hotel.location')
@@ -258,6 +259,7 @@ class FrontendController extends Controller
      * Payment hotel by id
      */
     public function paymentHotelById($id){
+        $id = substr($id,9);
         $this->AuthLogin();
         $hotel = DB::table('hotel')
         ->join('location','location.location_id','=','hotel.location')
@@ -267,6 +269,7 @@ class FrontendController extends Controller
         return view('frontend.layout.payment')->with('hotel', $hotel);
     }
     public function payment_succsess($id){
+        $id = substr($id,9);
         $this->AuthLogin();
         $hotel = DB::table('hotel')
         ->join('location','location.location_id','=','hotel.location')

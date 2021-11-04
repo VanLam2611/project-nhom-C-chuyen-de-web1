@@ -123,7 +123,8 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-12 pay">
-                        <form action="{{url('')}}/payment-success/{{$hotel[0]->hotel_id}}">
+                    <?php $key = rand(111111111,999999999); ?>
+                        <form action="{{url('')}}/payment-success/{{$key}}{{$hotel[0]->hotel_id}}">
                             <button class="pay-now">Pay Now</button>
                         </form>
                     </div>
