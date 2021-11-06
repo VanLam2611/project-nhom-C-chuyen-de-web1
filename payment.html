@@ -31,6 +31,9 @@
         media="screen">
     <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="css/search.css">
+    <!-- alert sweet 2 -->
+    <link rel="stylesheet" href="./css/sweetalert2.css">
+    <link rel="stylesheet" href="./css/sweetalert2.min.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -163,8 +166,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="payment-select request-form ftco-animate">
-                                    <h4 class="">Select your payment method <span
-                                            style="font-size: 16px;">(Click one option
+                                    <h4 class="">Select your payment method <span style="font-size: 16px;">(Click one
+                                            option
                                             below)</span></h4>
                                     <div class="row payment-visa">
                                         <div class="col">
@@ -260,32 +263,49 @@
                                                             <div class="credit-card-item">
                                                                 <img src="images/visa-mastercard.png" alt="Master card"
                                                                     class="img-fluid" width="150px" height="35px">
-                                                                
+
                                                                 <form action="#" class="request-form ftco-animate mt-2">
-                                                                    <div class="form-group">
-                                                                        <label for="" class="label">Card number</label>
-                                                                        <input type="text" class="form-control">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="" class="label">Name of card</label>
-                                                                        <input type="text" class="form-control">
-                                                                    </div>
-                                                                    <div class="d-flex" style="width: 100%;">
-                                                                        <div class="form-group"
-                                                                            style="width: 59%;margin-right: 15px;">
-                                                                            <label for=""
-                                                                                class="label">Expiration</label>
-                                                                            <input type="text" class="form-control">
+                                                                    <div id="errorText"></div>
+                                                                        <div class="form-group">
+                                                                            <label for="" class="label">Card
+                                                                                number</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="cardNumber" required>
                                                                         </div>
-                                                                        <div class="form-group" style="width: 39%;">
-                                                                            <label for="" class="label">CCV/CVV</label>
-                                                                            <input type="text" class="form-control">
+                                                                        <div class="form-group">
+                                                                            <label for="" class="label">Name of
+                                                                                card</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="nameCard" required>
                                                                         </div>
-                                                                    </div>
+                                                                        <div class="d-flex" style="width: 100%;">
+                                                                            <div class="form-group"
+                                                                                style="width: 59%;margin-right: 15px;">
+                                                                                <label for=""
+                                                                                    class="label">Expiration</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="ExpCard" required>
+                                                                            </div>
+                                                                            <div class="form-group" style="width: 39%;">
+                                                                                <label for=""
+                                                                                    class="label">CCV/CVV</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="CCVCard" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-4">
+                                                                            <div class="col-12 pay">
+                                                                                <input onclick="paymentClick()"
+                                                                                    type="submit" class="pay-now"
+                                                                                    value="Pay Now">
+
+                                                                            </div>
+                                                                        </div>
                                                                 </form>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <!--  -->
                                                 </div>
                                             </div>
                                         </div>
@@ -293,25 +313,20 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="info-right mt-4">
                         <div class="row">
                             <div class="col-12">
                                 <div class="payment-select request-form ftco-animate">
                                     <h4 class="border-bt mb-3">Rental terms </h4>
-                                    <span style="color: #db6315;">By completing this booking, you agree to the Booking Conditions, Terms and Conditions, and Privacy Policy.</span>
+                                    <span style="color: #db6315;">By completing this booking, you agree to the Booking
+                                        Conditions, Terms and Conditions, and Privacy Policy.</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="col-12 pay">
-                            <form action="">
-                                <input type="button" class="pay-now" value="Pay Now">
-                            </form>
-                        </div>
-                    </div>
+                    <!-- form submit -->
                 </div>
             </div>
         </div>
@@ -361,6 +376,11 @@
     <script src="js/custom.js"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="js/search.js"></script>
+    <!-- sweet alert click -->
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/alert-payment.js"></script>
+    <script src="./js/sweetalert2.min.js"></script>
+    <script src="./js/sweetalert2.js"></script>
 </body>
 
 </html>
