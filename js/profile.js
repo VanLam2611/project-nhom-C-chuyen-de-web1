@@ -2,10 +2,11 @@
     "use strict";
     // Auto-scroll
     $('#myCarousel').carousel({
+      //dừng khoảng thời gian hiện chạy
       interval: 5000
     });
   
-    // Control buttons
+    // sử lí nut
     $('.next').click(function () {
       $('.carousel').carousel('next');
       return false;
@@ -15,7 +16,7 @@
       return false;
     });
   
-    // On carousel scroll
+    //xử lí cuộn băng truyền
     $("#myCarousel").on("slide.bs.carousel", function (e) {
       var $e = $(e.relatedTarget);
       var idx = $e.index();
@@ -25,7 +26,7 @@
         var it = itemsPerSlide -
             (totalItems - idx);
         for (var i = 0; i < it; i++) {
-          // append slides to end
+          // kết nối các trình bày
           if (e.direction == "left") {
             $(
               ".carousel-item").eq(i).appendTo(".carousel-inner");
