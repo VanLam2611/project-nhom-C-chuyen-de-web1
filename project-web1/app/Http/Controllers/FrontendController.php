@@ -19,10 +19,6 @@ class FrontendController extends Controller
 {
     public function AuthLogin()
     {
-      
-        
-     
-        
         if (Auth::check()) {
             $admin_role = Auth::user()->role;
             if ($admin_role == '1') {
@@ -57,11 +53,7 @@ class FrontendController extends Controller
         $arr = [
             'email' => $request->email,
             'password' => $request->password,
-        ];
-       
-        // $check = DB::table('users_web')
-        // ->where('username','=',$request['username'])
-        // ->where('password','=',md5($request['password']))->first();        
+        ];     
         if(Auth::attempt(['email' =>  $request->email, 'password' => $request->password]))
         {
             $admin_role = Auth::user()->role;

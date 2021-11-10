@@ -11,12 +11,9 @@ class UsersController extends Controller
 {
     public function getAllUser()
     {
-        // $this->AuthLogin();
-        // $admin_id = Session::get('id');
-        // $admin_name = DB::table('users')->where('id', $admin_id)->first();
+      
         $user = DB::table("users_web")
-            // ->join('protypes', 'protypes.id', '=', 'products.type_id')
-            // ->join('manufactures', 'manufactures.id', '=', 'products.manu_id')
+          
              ->select('users_web.*');
         $user = $user->orderBy("users_web.id", "Desc");
 
@@ -25,12 +22,7 @@ class UsersController extends Controller
     }
     public function AddUser(Request $request)
     {
-        // $this->AuthLogin();
-        // $admin_id = Session::get('id');
-        // $admin_name = DB::table('users')->where('id', $admin_id)->first();
-        // $manu =  DB::table("manufactures")->orderBy("id", "desc")->get();
-        // $type =  DB::table("protypes")->orderBy("id", "desc")->get();
-        // $gender =  DB::table("genders")->orderBy("id", "desc")->get();
+      
         return view('backend.layouts.Users.addUser');
     }
     public function getSaveUser(Request $request)
@@ -50,9 +42,7 @@ class UsersController extends Controller
             "re-password.same" => "Mật khẩu không khớp"
 
         ]);
-        // $this->AuthLogin();
-        // $admin_id = Session::get('id');
-        // $admin_name = DB::table('users')->where('id', $admin_id)->first();
+    
         $checkemail = DB::table('users_web')->where('email',$request->email)->first();
         if($checkemail == null){
             $data = array();
@@ -105,9 +95,7 @@ class UsersController extends Controller
     }
     public function DeleteUser($id)
     {
-        // $this->AuthLogin();
-        // $admin_id = Session::get('id');
-        // $admin_name = DB::table('users')->where('id', $admin_id)->first();
+      
         $key = substr($id,0,9);
         $id = substr($id,9);
         

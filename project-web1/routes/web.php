@@ -55,7 +55,7 @@ Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "Ap
             Route::post("update/{id}", ["as" => "admin.categories.eidt", "uses" => "CategoriesController@UpdateCategories"]);
         });
         Route::group(["prefix" => "favorite"], function() {
-            Route::get("/", ["as" => "admin.favorite", "uses" => "FavoriteController@getAllFavorite"]);
+            Route::get("/admin", ["as" => "admin.favorite", "uses" => "FavoriteController@getAllFavorite"]);
            
             Route::get("delete/{id}", ["as" => "admin.favorite.delete", "uses" => "FavoriteController@DeleteFavorite"]);
            
